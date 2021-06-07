@@ -12,7 +12,14 @@
   <body>
     <header>
       <% if user_signed_in? %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <ul>
+          <li>体重管理</li>
+          <li>食事管理</li>
+          <li>カレンダー</li>
+          <li><%= link_to "ユーザー", users_path %></li>
+          <li><%= link_to "マイページ", user_path(current_user.id), method: :get %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        </ul>
       <% else %>
         <%= "マイページ" %>
         <%= "ユーザー" %>
