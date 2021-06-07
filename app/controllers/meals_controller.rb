@@ -6,8 +6,11 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.user_id = current_user.id
-    @meal.save
-    redirect_to root_path
+    if @meal.save
+      redirect_to meal_path(@meal.id)
+    else
+      render :new
+    end
   end
 
   def show
