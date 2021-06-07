@@ -1,2 +1,20 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<p><%= attachment_image_tag @user, :user_image, :fill, 150, 130, fallback:"no_image.jpg" %></p>
+<p><%= @user.nick_name %></p>
+<p>性別：
+  <% if @user.sex == "nil" %>
+    <%= "" %>
+  <% else %>
+    <%= @user.sex %>
+  <% end %>
+</p>
+<p>身長： <%= @user.height %></p>
+<p>目標体重： <%= @user.target_weight %></p>
+<p>自己紹介<%= @user.introduction %></p>
+
+<% if @user.id == current_user.id %>
+  <div>
+    <%= link_to "プロフィールを編集する", edit_user_path(@user.id) %>
+  </div>
+<% end %>
