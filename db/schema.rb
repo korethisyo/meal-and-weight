@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 2021_06_07_062523) do
 
   create_table "meals", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "category_id", null: false
     t.date "date", null: false
     t.string "menu_image_id", null: false
+    t.integer "category", default: 0, null: false
     t.text "menu_detail", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

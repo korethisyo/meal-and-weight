@@ -7,11 +7,11 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.user_id = current_user.id
     @meal.save
-    binding.pry
     redirect_to root_path
   end
 
   def show
+    @meal = Meal.find(params[:id])
   end
 
   def edit
@@ -23,6 +23,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:date, :menu_image, :menu_detail)
+    params.require(:meal).permit(:date, :menu_image, :category, :menu_detail)
   end
 end
