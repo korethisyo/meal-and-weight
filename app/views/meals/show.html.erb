@@ -5,3 +5,24 @@
 <p>カテゴリー  <%= @meal.category %></p>
 <p>メニュー詳細  <%= @meal.menu_detail %></p>
 <p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
+
+<div class="comments">
+  <% @meal.post_comments.each do |post_comment| %>
+    <%= attachment_image_tag post_comment.user, :user_image, :fill, 60, 60, fallback:"no_image.jpg" %>
+    <%= post_comment.user.nick_name %>
+    <%= post_comment.comment %>
+    <% if post_comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", meal_post_comment_path(post_comment.meal.id, post_comment.id), method: :delete %>
+      </div>
+    <% end %>
+ <% end %>
+</div>
+
+<div class="comment-form">
+  <%= form_with(model:[@meal, @post_comment], local: true) do |f| %>
+    <%= f.label :comment, "コメントを書く" %>
+    <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
+    <%= f.submit "コメントを送信する" %>
+  <% end %>
+</div>

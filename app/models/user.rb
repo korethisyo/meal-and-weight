@@ -11,4 +11,5 @@ class User < ApplicationRecord
   attachment :user_image
 
   has_many :meals, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 end
