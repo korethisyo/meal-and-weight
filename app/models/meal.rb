@@ -1,5 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
   has_many :meal_menus, dependent: :destroy
   accepts_nested_attributes_for :meal_menus, allow_destroy: true
 
