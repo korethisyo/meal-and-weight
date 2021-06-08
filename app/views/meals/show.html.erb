@@ -1,0 +1,7 @@
+<h1>食事内容詳細</h1>
+
+<%= attachment_image_tag @meal, :menu_image, :fill, 150, 150, fallback:"no_image.jpg" %>
+<p>メニュー　<%= @meal.meal_menus.name %></p>
+<p>カテゴリー  <%= @meal.category %></p>
+<p>メニュー詳細  <%= @meal.menu_detail %></p>
+<p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
