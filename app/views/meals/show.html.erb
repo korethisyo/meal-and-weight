@@ -3,3 +3,4 @@
 <%= attachment_image_tag @meal, :menu_image, :fill, 150, 150, fallback:"no_image.jpg" %>
 <p>カテゴリー  <%= @meal.category %></p>
 <p>メニュー詳細  <%= @meal.menu_detail %></p>
+<p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
