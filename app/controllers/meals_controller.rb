@@ -1,6 +1,7 @@
 class MealsController < ApplicationController
   def new
     @meal = Meal.new
+    @meal.meal_menus.build
   end
 
   def create
@@ -30,6 +31,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:date, :menu_image, :category, :menu_detail)
+    params.require(:meal).permit(:date, :menu_image, :category, :menu_detail, meal_menus_attributes: [:meal_id, :name])
   end
 end

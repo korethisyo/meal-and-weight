@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_062523) do
+ActiveRecord::Schema.define(version: 2021_06_08_050331) do
+
+  create_table "meal_menus", force: :cascade do |t|
+    t.integer "meal_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_meal_menus_on_meal_id"
+  end
 
   create_table "meals", force: :cascade do |t|
     t.integer "user_id", null: false
