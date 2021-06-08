@@ -3,7 +3,7 @@
 <%= form_with model:@meal, local: true do |f| %>
   <div class="form-group">
     <%= f.label :date, "日付" %>
-    <%= f.text_field :date %>
+    <%= f.date_field :date %>
   </div>
   <div class="form-group">
     <%= f.label :menu_image_id, "食事画像" %>
