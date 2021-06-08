@@ -3,13 +3,7 @@
 <div class="profile">
   <p><%= attachment_image_tag @user, :user_image, :fill, 150, 130, fallback:"no_image.jpg" %></p>
   <h2><%= @user.nick_name %></h2>
-  <p>性別：
-    <% if @user.sex == "選択してください" %>
-      <%= "" %>
-    <% else %>
-      <%= @user.sex %>
-    <% end %>
-  </p>
+  <p>性別： <%= @user.sex %></p>
   <p>身長： <%= @user.height %></p>
   <p>目標体重： <%= @user.target_weight %></p>
   <p>自己紹介<%= @user.introduction %></p>
