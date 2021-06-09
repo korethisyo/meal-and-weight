@@ -4,6 +4,19 @@
 <p>メニュー　<%= @meal.meal_menus.name %></p>
 <p>カテゴリー  <%= @meal.category %></p>
 <p>メニュー詳細  <%= @meal.menu_detail %></p>
+<% if @meal.favorited_by?(current_user) %>
+  <p>
+    <%= link_to meal_favorites_path(@meal.id), method: :delete do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to meal_favorites_path(@meal.id), method: :post do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  </p>
+<% end %>
 <p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
 
 <div class="comments">
