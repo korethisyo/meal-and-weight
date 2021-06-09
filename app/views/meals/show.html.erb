@@ -10,6 +10,9 @@
 <p>カテゴリー  <%= @meal.category %></p>
 <p>メニュー詳細  <%= @meal.menu_detail %></p>
 <p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
+<% if @meal.user_id == current_user.id %>
+  <p><%= link_to "削除", meal_path(@meal.id), method: :delete %></p>
+<% end %>
 
 <div class="comments">
   <% @meal.post_comments.each do |post_comment| %>

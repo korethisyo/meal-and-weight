@@ -33,7 +33,11 @@
         <% end %>
       </td>
       <td><%= meal.date %></td>
-      <td></td>
+      <td>
+        <% meal.meal_menus.each do |mm| %>
+          <%= mm.name %>
+        <% end %>
+      </td>
       <td>コメント数： <%= meal.post_comments.count %></td>
       <td></td>
     </tr>
