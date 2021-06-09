@@ -8,7 +8,7 @@
   <p>目標体重： <%= @user.target_weight %> kg</p>
   <p>自己紹介 <%= @user.introduction %></p>
 
-  <% if @user.id == current_user.id %>
+  <% if @user.current_user?(current_user) %>
     <div>
       <%= link_to "プロフィールを編集する", edit_user_path(@user.id) %>
     </div>
@@ -39,7 +39,23 @@
         <% end %>
       </td>
       <td>コメント数： <%= meal.post_comments.count %></td>
-      <td></td>
+      <td>
+        <% if meal.favorited_by?(current_user) %>
+          <p>
+            いいね数：
+            <%= link_to meal_favorites_path(meal.id), method: :delete do %>
+              <i class="fas fa-heart"></i><%= meal.favorites.count %>
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            いいね数：
+            <%= link_to meal_favorites_path(meal.id), method: :post do %>
+              <i class="far fa-heart"></i><%= meal.favorites.count %>
+            <% end %>
+          </p>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

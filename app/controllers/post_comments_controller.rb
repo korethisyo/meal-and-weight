@@ -1,9 +1,7 @@
 class PostCommentsController < ApplicationController
   def create
     @meal = Meal.find(params[:meal_id])
-    @post_comment = PostComment.new(post_comment_params)
-    @post_comment.user_id = current_user.id
-    @post_comment.meal_id = @meal.id
+    @post_comment = PostComment.new(post_comment_params).set_meal(current_user, @meal)
     if @post_comment.save
       redirect_to meal_path(@meal.id)
     else

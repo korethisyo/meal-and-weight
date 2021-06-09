@@ -69,3 +69,4 @@ gem "refile-mini_magick"
 #食事内容入力の際のメニュー名に対して動的にフォームを増やす
 gem 'cocoon'
 gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.13'

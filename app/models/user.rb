@@ -12,4 +12,9 @@ class User < ApplicationRecord
 
   has_many :meals, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  
+  def current_user?(current_user)
+    id == current_user.id
+  end
 end
