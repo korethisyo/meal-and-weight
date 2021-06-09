@@ -65,3 +65,7 @@ gem 'devise'
 gem 'pry-byebug', group: :development
 gem "refile", require:"refile/rails", github:'manfe/refile'
 gem "refile-mini_magick"
+
+#食事内容入力の際のメニュー名に対して動的にフォームを増やす
+gem 'cocoon'
+gem 'jquery-rails'
