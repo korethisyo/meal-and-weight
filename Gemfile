@@ -65,3 +65,4 @@ gem 'devise'
 gem 'pry-byebug', group: :development
 gem "refile", require:"refile/rails", github:'manfe/refile'
 gem "refile-mini_magick"
+gem 'font-awesome-sass', '~> 5.13'
