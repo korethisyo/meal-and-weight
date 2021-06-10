@@ -1,0 +1,15 @@
+<% if meal.favorited_by?(current_user) %>
+  <p>
+    いいね数：
+    <%= link_to meal_favorites_path(meal.id), method: :delete, remote: true do %>
+      <i class="fas fa-heart"></i><%= meal.favorites.count %>
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    いいね数：
+    <%= link_to meal_favorites_path(meal.id), method: :post, remote: true do %>
+      <i class="far fa-heart"></i><%= meal.favorites.count %>
+    <% end %>
+  </p>
+<% end %>
