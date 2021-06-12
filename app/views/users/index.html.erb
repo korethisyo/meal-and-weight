@@ -1,8 +1,18 @@
-<h1>ユーザー一覧</h1>
-
-<% @users.each do |user| %>
-  <%= link_to user_path(user.id) do %>
-    <%= attachment_image_tag user, :user_image, :fill, 70, 70, fallback:"no_image.jpg" %>
-    <%= user.nick_name %>
-  <% end %>
-<% end %>
+<div class="container">
+  <h2>ユーザー一覧</h2>
+  <!--ユーザー一覧-->
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-4 col-xs-12">
+        <div class="user">
+          <%= link_to user_path(user.id) do %>
+            <%= attachment_image_tag user, :user_image, :fill, 70, 70, fallback:"no_image.jpg" %>
+            <%= user.nick_name %>
+          <% end %>
+          / <%= user.sex %>
+          / <%= user.height %> cm
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

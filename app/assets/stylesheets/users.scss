@@ -1,3 +1,79 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h2 {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.user {
+  margin: 10px 0;
+  height: 90px;
+}
+
+.profile {
+  margin: 30px 0 30px 0;
+}
+
+.profile-img {
+  text-align: center;
+}
+
+.name {
+  font-weight: bold;
+  margin: 20px 0 20px 0;
+}
+
+.user-status {
+  text-align: center;
+}
+
+.user-status ul {
+  margin: 0 auto 10px;
+  padding-left: 0;
+  display: table;
+}
+
+.user-status ul li {
+  width: 120px;
+  padding: 5px 0;
+  border-right: 1px solid #ddd;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #777;
+}
+
+.status-title {
+  font-size: 12px;
+}
+
+.status-body {
+  font-size: 17px;
+}
+
+.introduction {
+  text-align: center;
+}
+
+.introduction ul {
+  margin: 0 auto 10px;
+  padding-left: 0;
+  display: table;
+}
+
+.introduction ul li {
+  padding: 5px 0;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #777;
+}
+
+.intro-title {
+  font-size: 12px;
+}
+
+.edit-button {
+  text-align: center;
+}
