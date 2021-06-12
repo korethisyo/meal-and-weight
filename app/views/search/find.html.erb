@@ -1,9 +1,9 @@
-<!--ユーザー情報検索フォーム-->
-<%= render 'search/find' %>
-
 <div class="container">
-  <h2>ユーザー一覧</h2>
-  <!--ユーザー一覧-->
+  <!--ユーザー情報検索フォーム-->
+  <%= render 'find' %>
+
+  <!--ユーザー情報検索結果-->
+  <h2>検索結果　"<%= "#{@word}" %>"</h2>
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-md-4 col-xs-12">
@@ -12,8 +12,6 @@
             <%= attachment_image_tag user, :user_image, :fill, 70, 70, fallback:"no_image.jpg" %>
             <%= user.nick_name %>
           <% end %>
-          / <%= user.sex %>
-          / <%= user.height %> cm
         </div>
       </div>
     <% end %>

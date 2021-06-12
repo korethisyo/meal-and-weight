@@ -1,28 +1,38 @@
-<h1>食事内容入力</h1>
+<div class="container">
 
-<%= form_with model:@meal, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :date, "日付" %>
-    <%= f.date_field :date %>
-  </div>
-  <div class="form-group">
-    <%= f.fields_for :meal_menus do |mm| %>
-      <%= render 'meal_menu_fields', f: mm %>
-      <%= link_to_add_association '＋', f, :meal_menus %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= f.label :menu_image_id, "食事画像" %>
-    <%= f.attachment_field :menu_image %>
-  </div>
-  <div class="form-group">
-    <%= f.label :category, "カテゴリー" %>
-    <%= f.select :category, options_for_select(Meal.categories.keys) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :menu_detail, "メニュー詳細" %>
-    <%= f.text_area :menu_detail %>
-  </div>
-  <%= f.submit "記録する" %>
-<% end %>
+  <h2>食事内容入力</h2>
 
+  <div class="row justify-content-center">
+    <div class="form-horizontal">
+      <%= form_with model:@meal, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :date, "日付", class:"form-label" %>
+          <%= f.date_field :date, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.fields_for :meal_menus do |mm| %>
+            <%= render 'meal_menu_fields', f: mm %>
+            <%= link_to_add_association '＋', f, :meal_menus %>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <div class="custom-file">
+            <%= f.label :menu_image_id, "食事画像", class:"custome-file-label" %>
+            <%= f.attachment_field :menu_image, class:"form-control-file" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :category, "カテゴリー", class:"form-label" %>
+          <%= f.select :category, options_for_select(Meal.categories.keys), class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :menu_detail, "メニュー詳細", class:"form-label" %>
+          <%= f.text_area :menu_detail, class:"form-control" %>
+        </div>
+        <div class="button">
+          <%= f.submit "記録する", class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

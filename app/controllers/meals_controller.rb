@@ -17,7 +17,6 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
     @post_comment = PostComment.new
-    
   end
 
   def edit

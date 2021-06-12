@@ -1,15 +1,18 @@
-<h1>検索結果　"<%= "#{@content}" %>"</h1>
+<!--食事情報検索フォーム-->
+<%= render 'search' %>
+
+<h2>検索結果　"<%= "#{@content}" %>"</h2>
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th></th>
       <th>日付</th>
       <th>メニュー</th>
-      <th colspan="3"></th>
+      <th>投稿ユーザー</th>
     </tr>
   </thead>
   <tbody>
-  <% @meal.each do |meal| %>
+  <% @meals.each do |meal| %>
     <tr>
       <td>
         <%= link_to meal_path(meal.id) do %>
@@ -24,6 +27,7 @@
           <%= mm.name %>
         <% end %>
       </td>
+      <td><%= meal.user.nick_name %></td>
     </tr>
   <% end %>
   </tbody>

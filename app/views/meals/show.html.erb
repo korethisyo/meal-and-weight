@@ -1,5 +1,5 @@
 <!--検索フォーム-->
-<%= render 'layouts/search' %>
+<%= render 'search/search' %>
 
 <h1>食事内容詳細</h1>
 
@@ -12,20 +12,26 @@
 </p>
 <p>カテゴリー  <%= @meal.category %></p>
 <p>メニュー詳細  <%= @meal.menu_detail %></p>
+
 <!--いいね機能の非同期通信-->
 <div id="favorite-<%= @meal.id %>">
   <%= render 'favorites/favorite', meal: @meal %>
 </div>
+<!--いいね機能の非同期通信-->
 
 <p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
+
 <% if @meal.user_id == current_user.id %>
   <p><%= link_to "削除", meal_path(@meal.id), method: :delete %></p>
 <% end %>
 
+<!--コメント一覧-->
 <div id="comments">
   <%= render 'post_comments/comment', meal: @meal %>
 </div>
+<!--コメント一覧-->
 
+<!--コメント投稿フォーム-->
 <div class="comment-form">
   <%= form_with model:[@meal, @post_comment] do |f| %>
     <%= f.label :comment, "コメントを書く" %>
@@ -33,3 +39,4 @@
     <%= f.submit "コメントを送信する" %>
   <% end %>
 </div>
+<!--コメント投稿フォーム-->
