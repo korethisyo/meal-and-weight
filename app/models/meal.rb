@@ -12,6 +12,10 @@ class Meal < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  def self.search_for(content, method)
+      self.joins(:meal_menus).where('name LIKE ?', "%#{content}%")
+  end
+
   #def self.hoge(params)
    # Meal.find(params)
   #end
