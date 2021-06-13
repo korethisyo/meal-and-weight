@@ -29,9 +29,15 @@ class MealsController < ApplicationController
     redirect_to meal_path(@meal.id)
   end
 
+  def destroy
+    @meal = Meal.find(params[:id])
+    @meal.destroy
+    redirect_to user_path(@meal.user.id)
+  end
+
   private
 
   def meal_params
-    params.require(:meal).permit(:date, :menu_image, :category, :menu_detail, meal_menus_attributes: [:meal_id, :name])
+    params.require(:meal).permit(:date, :menu_image, :category, :menu_detail, meal_menus_attributes: [:id, :meal_id, :name, :_destroy])
   end
 end

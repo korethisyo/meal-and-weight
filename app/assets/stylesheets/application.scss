@@ -16,3 +16,12 @@
 
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import "bootstrap";
+
+* {
+  font-family: "メイリオ", Meiryo, Osaka, "ＭS Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+ body {
+  background-color: #f2f2f2;
+ }

@@ -6,12 +6,18 @@
     <%= f.date_field :date %>
   </div>
   <div class="form-group">
+    <%= f.fields_for :meal_menus do |mm| %>
+      <%= render 'meal_menu_fields', f: mm %>
+      <%= link_to_add_association '＋', f, :meal_menus %>
+    <% end %>
+  </div>
+  <div class="form-group">
     <%= f.label :menu_image_id, "食事画像" %>
     <%= f.attachment_field :menu_image %>
   </div>
   <div class="form-group">
     <%= f.label :category, "カテゴリー" %>
-    <%= f.select :category, options_for_select(Meal.categories.keys) %>
+    <%= f.select :category, options_for_select(Meal.categories.keys, @meal.category) %>
   </div>
   <div class="form-group">
     <%= f.label :menu_detail, "メニュー詳細" %>

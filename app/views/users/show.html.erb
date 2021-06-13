@@ -1,63 +1,76 @@
-<h1>マイページ</h1>
+<div class="container">
+  <!--食事情報検索フォーム-->
+  <%= render 'search/search' %>
 
-<div class="profile">
-  <p><%= attachment_image_tag @user, :user_image, :fill, 150, 130, fallback:"no_image.jpg" %></p>
-  <h2><%= @user.nick_name %></h2>
-  <p>性別：
-    <% if @user.sex == "選択してください" %>
-      <%= "" %>
-    <% else %>
-      <%= @user.sex %>
-    <% end %>
-  </p>
-  <p>身長： <%= @user.height %></p>
-  <p>目標体重： <%= @user.target_weight %></p>
-  <p>自己紹介<%= @user.introduction %></p>
-
-  <% if @user.id == current_user.id %>
-    <div>
-      <%= link_to "プロフィールを編集する", edit_user_path(@user.id) %>
+  <!--ユーザーのプロフィール欄-->
+  <div class="profile">
+    <div class="profile-img"><%= attachment_image_tag @user, :user_image, :fill, 150, 130, fallback:"no_image.jpg" %></div>
+    <h2 class="name"><%= @user.nick_name %></h2>
+    <div class="user-status">
+      <ul>
+        <li>
+          <div class="status-title">性別</div>
+          <div class="status-body"><%= @user.sex %></div>
+        </li>
+        <li>
+          <div class="status-title">身長</div>
+          <div class="status-body"><%= @user.height %> cm</div>
+        </li>
+        <li>
+          <div class="status-title">目標体重</div>
+          <div class="status-body"><%= @user.target_weight %> kg</div>
+        </li>
+      </ul>
     </div>
-  <% end %>
+
+    <div class="introduction">
+      <ul>
+        <li>
+          <div class="intro-title">自己紹介</div>
+          <div class="intro-body"><%= @user.introduction %></div>
+        </li>
+      </ul>
+    </div>
+
+    <% if @user.current_user?(current_user) %>
+      <div class="edit-button">
+        <%= link_to "プロフィールを編集する", edit_user_path(@user.id), class:"btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!--マイページのユーザーの食事記録一覧-->
+  <div class="col-md-12">
+    <h3>食事一覧</h3>
+
+    <table class="table table-striped">
+      <tr class="table-header">
+        <th></th>
+        <th>日付</th>
+        <th>メニュー</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @user.meals.each do |meal| %>
+        <tr class="table-body">
+          <td>
+            <%= link_to meal_path(meal.id) do %>
+              <%= attachment_image_tag meal, :menu_image, :fill, 50, 50, fallback:"no_image.jpg" %>
+            <% end %>
+          </td>
+          <td><%= meal.date %></td>
+          <td>
+            <% meal.meal_menus.each do |mm| %>
+              <%= mm.name %>
+            <% end %>
+          </td>
+          <td>コメント数： <%= meal.post_comments.count %></td>
+          <td id="favorite-<%= meal.id %>">
+            <%= render 'favorites/favorite', meal: meal %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
 </div>
-
-<h1>食事一覧</h1>
-
-<table>
-  <tr class="table-header">
-    <th></th>
-    <th>日付</th>
-    <th>メニュー</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @user.meals.each do |meal| %>
-    <tr class="table-body">
-      <td>
-        <%= link_to meal_path(meal.id) do %>
-          <%= attachment_image_tag meal, :menu_image, :fill, 50, 50, fallback:"no_image.jpg" %>
-        <% end %>
-      </td>
-      <td><%= meal.date %></td>
-      <td></td>
-      <td>コメント数： <%= meal.post_comments.count %></td>
-      <td>
-        <% if meal.favorited_by?(current_user) %>
-          <p>
-            いいね数：
-            <%= link_to meal_favorites_path(meal.id), method: :delete do %>
-              <i class="fas fa-heart"></i><%= meal.favorites.count %>
-            <% end %>
-          </p>
-        <% else %>
-          <p>
-            いいね数:
-            <%= link_to meal_favorites_path(meal.id), method: :post do %>
-              <i class="far fa-heart"></i><%= meal.favorites.count %>
-            <% end %>
-          </p>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
