@@ -1,17 +1,20 @@
 class WeightsController < ApplicationController
   def index
-    @weight = Weight.new
+    @weight_new = Weight.new
+    # @weight = Weight.find(params[:id])
   end
 
   def create
-    @weight = Weight.new(weight_params)
-    @weight.user_id = current_user.id
-    @weight.save
+    @weight_new = Weight.new(weight_params)
+    @weight_new.user_id = current_user.id
+    @weight_new.save
     redirect_to users_path
   end
 
   def update
-
+    @weight = Weight.find(params[:id])
+    @weight.update(weight_params)
+    redirect_to users_path
   end
 
   private
