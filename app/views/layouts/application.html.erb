@@ -13,7 +13,7 @@
     <header>
       <% if user_signed_in? %>
         <ul>
-          <li>体重管理</li>
+          <li><%= link_to "体重管理", weights_path %></li>
           <li><%= link_to "食事管理", new_meal_path %></li>
           <li>カレンダー</li>
           <li><%= link_to "ユーザー", users_path %></li>
