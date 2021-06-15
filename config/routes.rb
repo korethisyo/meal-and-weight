@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :weights, only:[:index, :create, :update]
+  resources :weights, only:[:index, :create, :edit, :update]
 
   get 'search' => 'search#search'
   get 'find' => 'search#find'

@@ -1,17 +1,29 @@
 <h3>体重管理</h3>
 
-<div class="weight-form">
-  <%= form_with model: @weight, local: true do |f| %>
-    <div class="form-group">
-      <%= f.label :weight, "体重" %>
-      <%= f.text_field :weight %> kg
+<!--体重登録フォーム-->
+<%= render 'form', weight: @weight %>
+
+<!--体重記録一覧-->
+<div class="table">
+  <table>
+    <div class="theader">
+      <tr>
+        <th>日付</th>
+        <th>体重</th>
+        <th>体脂肪率</th>
+        <th></th>
+      </tr>
     </div>
-    <div class="form-group">
-      <%= f.label :body_fat, "体脂肪" %>
-      <%= f.text_field :body_fat %> %
+
+    <div class="tbody">
+      <% @weights.each do |weight| %>
+        <tr>
+          <th><%= weight.date %></th>
+          <th><%= weight.weight %></th>
+          <th><%= weight.body_fat %></th>
+          <th><%= link_to "変更する", edit_weight_path(weight.id) %></th>
+        </tr>
+      <% end %>
     </div>
-    <div class="button">
-      <%= f.submit "記録する" %>
-    </div>
-  <% end %>
+  </table>
 </div>
