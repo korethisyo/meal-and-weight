@@ -2,6 +2,7 @@ class WeightsController < ApplicationController
   def index
     @weight = Weight.new
     @weights = Weight.all
+    gon.weights = @weights
   end
 
   def create
