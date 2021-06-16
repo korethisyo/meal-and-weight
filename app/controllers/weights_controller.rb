@@ -2,18 +2,10 @@ class WeightsController < ApplicationController
   def index
     @weight = Weight.new
     @weights = Weight.all
-
+     # 体重のデータ取得(y軸）
     gon.weight = Weight.where(user_id: current_user.id).pluck(:weight)
+     # 日付のデータ取得(x軸）
     gon.date = Weight.where(user_id: current_user.id).pluck(:date)
-
-    # binding.pry
-
-    # 日付のデータ取得(x軸）
-    # @weight_by_day = @weights.group_by_day(:date).size
-    # @graph_labels = @weight_by_day.map(&:first).to_json.html_safe
-
-    # binding.pry
-    # gon.weights = @weights
   end
 
   def create

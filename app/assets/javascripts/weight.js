@@ -1,4 +1,9 @@
 $(document).on('ready turbolinks:load', function() {
+  var xAxisLabelMinWidth = 20;
+  var width = gon.date*xAxisLabelMinWidth;
+  document.getElementById("myChart").style.width = width+"px";
+  document.getElementById("myChart").style.height = "500px";
+
   var ctx = document.getElementById("myChart");
   var myLineChart = new Chart(ctx, {
     type: 'line',
@@ -14,6 +19,7 @@ $(document).on('ready turbolinks:load', function() {
       ],
     },
     options: {
+      responsive: false,
       title: {
         display: false,
         text: '体重推移'
