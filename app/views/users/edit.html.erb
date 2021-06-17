@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <%= f.label :sex, "性別" %>
-    <%= f.select :sex, options_for_select(User.sexes.keys, @user.sex), include_blank: "選択してください" %>
+    <%= f.select :sex, options_for_select(User.sexes.keys, @user.sex), include_blank: "" %>
   </div>
   <div class="form-group">
     <%= f.label :height, "身長" %>

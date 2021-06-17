@@ -7,7 +7,7 @@ class User < ApplicationRecord
   #validates :name, presense: true
   #validates :nick_name, presense: true
 
-  enum sex: {女性:0, 男性:1, その他:2, 無回答:3}
+  enum sex: {Female:0, Male:1, Others:2, NoAnswer:3}
   attachment :user_image
 
   has_many :meals, dependent: :destroy
