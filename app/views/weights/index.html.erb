@@ -1,4 +1,4 @@
-<h3>体重管理</h3>
+<h3>Weight Record</h3>
 
 <!--体重グラフ-->
 <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
@@ -8,16 +8,18 @@
 </div>
 
 <!--体重登録フォーム-->
-<%= render 'form', weight: @weight %>
+<div class="container">
+  <%= render 'form', weight: @weight %>
+</div>
 
 <!--体重記録一覧-->
 <div class="table">
   <table>
     <div class="theader">
       <tr>
-        <th>日付</th>
-        <th>体重</th>
-        <th>体脂肪率</th>
+        <th>Date</th>
+        <th>Weight(kg)</th>
+        <th>Body Fat(%)</th>
         <th></th>
       </tr>
     </div>
@@ -28,7 +30,7 @@
           <th><%= weight.date %></th>
           <th><%= weight.weight %></th>
           <th><%= weight.body_fat %></th>
-          <th><%= link_to "変更する", edit_weight_path(weight.id) %></th>
+          <th><%= link_to "Edit Data", edit_weight_path(weight.id) %></th>
         </tr>
       <% end %>
     </div>

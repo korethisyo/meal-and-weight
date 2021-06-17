@@ -1,19 +1,21 @@
-<div class="weight-form">
-  <%= form_with model: weight, local: true do |f| %>
-    <div class="form-group">
-      <%= f.label :date, "日付" %>
-      <%= f.date_field :date %>
+  <div class="row justify-content-center">
+    <div class="form-horizontal">
+      <%= form_with model: weight, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :date, "Date", class:"form-label" %>
+          <%= f.date_field :date, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :weight, "Weight", class:"form-label" %>
+          <%= f.text_field :weight, placeholder: "xx.x", class:"form-control" %> kg
+        </div>
+        <div class="form-group">
+          <%= f.label :body_fat, "Body Fat", class:"form-label" %>
+          <%= f.text_field :body_fat, placeholder: "xx.x", class:"form-control" %> %
+        </div>
+        <div class="button">
+          <%= f.submit "Save", class:"btn btn-outline-secondary" %>
+        </div>
+      <% end %>
     </div>
-    <div class="form-group">
-      <%= f.label :weight, "体重" %>
-      <%= f.text_field :weight %> kg
-    </div>
-    <div class="form-group">
-      <%= f.label :body_fat, "体脂肪" %>
-      <%= f.text_field :body_fat %> %
-    </div>
-    <div class="button">
-      <%= f.submit "記録する" %>
-    </div>
-  <% end %>
-</div>
+  </div>

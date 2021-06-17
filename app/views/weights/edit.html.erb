@@ -1,7 +1,10 @@
-<h2>体重記録変更</h2>
+<div class="container">
+  <h2 class="mb-4">Edit Weight Record</h2>
+  <!--体重記録変更フォーム-->
+  <%= render 'form', weight: @weight %>
+  <!--weights/index.html.erbに戻る-->
+  <div class="row justify-content-center mt-4">
+    <%= link_to "Back", weights_path %>
+  </div>
+</div>
 
-<!--体重記録変更フォーム-->
-<%= render 'form', weight: @weight %>
-
-<!--weights/index.html.erbに戻る-->
-<%= link_to "戻る", weights_path %>
