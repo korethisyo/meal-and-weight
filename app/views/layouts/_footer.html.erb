@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <%= link_to "トップページ", user_path(current_user.id) %>
+<% else %>
+  <%= link_to "トップページ", root_path %>
+<% end %>
+
+<h2>MyIdealBody</h2>
+<p>© 2021.Y.K</p>

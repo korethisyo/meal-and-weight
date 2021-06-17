@@ -1,0 +1,19 @@
+<div class="weight-form">
+  <%= form_with model: weight, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :date, "日付" %>
+      <%= f.date_field :date %>
+    </div>
+    <div class="form-group">
+      <%= f.label :weight, "体重" %>
+      <%= f.text_field :weight %> kg
+    </div>
+    <div class="form-group">
+      <%= f.label :body_fat, "体脂肪" %>
+      <%= f.text_field :body_fat %> %
+    </div>
+    <div class="button">
+      <%= f.submit "記録する" %>
+    </div>
+  <% end %>
+</div>

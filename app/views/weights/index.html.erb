@@ -1,0 +1,36 @@
+<h3>体重管理</h3>
+
+<!--体重グラフ-->
+<div class="chartWrapper" style="position: relative; overflow-x: scroll;">
+  <div class="chartContainer" style="height:500px;">
+    <canvas id="myChart" style="position: absolute; left: 0; top: 0;"></canvas>
+  </div>
+</div>
+
+<!--体重登録フォーム-->
+<%= render 'form', weight: @weight %>
+
+<!--体重記録一覧-->
+<div class="table">
+  <table>
+    <div class="theader">
+      <tr>
+        <th>日付</th>
+        <th>体重</th>
+        <th>体脂肪率</th>
+        <th></th>
+      </tr>
+    </div>
+
+    <div class="tbody">
+      <% @weights.each do |weight| %>
+        <tr>
+          <th><%= weight.date %></th>
+          <th><%= weight.weight %></th>
+          <th><%= weight.body_fat %></th>
+          <th><%= link_to "変更する", edit_weight_path(weight.id) %></th>
+        </tr>
+      <% end %>
+    </div>
+  </table>
+</div>
