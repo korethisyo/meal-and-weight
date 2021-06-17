@@ -1,9 +1,11 @@
 <!--食事内容検索フォーム-->
 <% if user_signed_in? %>
-  <div class="row justify-content-center">
+<div class="container mt-2 mb-2">
+  <div class="row justify-content-end">
     <%= form_with url: search_path, method: :get, local:true do |f| %>
       <%= f.text_field :content, placeholder: "Menu Name" %>
       <%= f.submit 'Search', class:"btn btn-outline-primary" %>
     <% end %>
   </div>
+</div>
 <% end %>
