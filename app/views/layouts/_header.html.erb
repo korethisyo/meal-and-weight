@@ -1,12 +1,9 @@
 <% if user_signed_in? %>
-  <ul>
-    <li><%= link_to "体重管理", weights_path %></li>
-    <li><%= link_to "食事管理", new_meal_path %></li>
-    <li>カレンダー</li>
-    <li><%= link_to "ユーザー", users_path %></li>
-    <li><%= link_to "マイページ", user_path(current_user.id), method: :get %></li>
-    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-  </ul>
+  <%= link_to "体重管理", weights_path %>
+  <%= link_to "食事管理", new_meal_path %>
+  <%= link_to "ユーザー", users_path %>
+  <%= link_to "マイページ", user_path(current_user.id), method: :get %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <% else %>
   <%= "マイページ" %>
   <%= "ユーザー" %>
