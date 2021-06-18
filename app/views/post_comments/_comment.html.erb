@@ -1,10 +1,10 @@
 <% meal.post_comments.each do |post_comment| %>
-    <%= attachment_image_tag post_comment.user, :user_image, :fill, 60, 60, fallback:"no_image.jpg" %>
+    <%= attachment_image_tag post_comment.user, :user_image, :fill, 60, 60, size: "60x60", fallback:"no_image.jpg" %>
     <%= post_comment.nick_name %>
     <%= post_comment.comment %>
     <% if post_comment.written_by?(current_user) %>
       <div class="comment-delete">
-        <%= link_to "削除", meal_post_comment_path(post_comment.meal.id, post_comment.id), method: :delete, remote: true %>
+        <%= link_to "Delete comment", meal_post_comment_path(post_comment.meal.id, post_comment.id), method: :delete, remote: true, class:"btn btn-outline-danger" %>
       </div>
     <% end %>
  <% end %>
