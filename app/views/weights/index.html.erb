@@ -1,38 +1,47 @@
-<h3>Weight Record</h3>
-
-<!--体重グラフ-->
-<div class="chartWrapper" style="position: relative; overflow-x: scroll;">
-  <div class="chartContainer" style="height:500px;">
-    <canvas id="myChart" style="position: absolute; left: 0; top: 0;"></canvas>
-  </div>
-</div>
-
-<!--体重登録フォーム-->
 <div class="container">
-  <%= render 'form', weight: @weight %>
-</div>
 
-<!--体重記録一覧-->
-<div class="table">
-  <table>
-    <div class="theader">
-      <tr>
-        <th>Date</th>
-        <th>Weight(kg)</th>
-        <th>Body Fat(%)</th>
-        <th></th>
-      </tr>
-    </div>
+  <h2 class="mb-4">Weight Record</h2>
 
-    <div class="tbody">
-      <% @weights.each do |weight| %>
-        <tr>
-          <th><%= weight.date %></th>
-          <th><%= weight.weight %></th>
-          <th><%= weight.body_fat %></th>
-          <th><%= link_to "Edit Data", edit_weight_path(weight.id) %></th>
-        </tr>
-      <% end %>
+  <!--体重グラフ-->
+  <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
+    <div class="chartContainer" style="height:500px;">
+      <canvas id="myChart" style="position: absolute; left: 0; right: 0; top: 0; margin: auto;"></canvas>
     </div>
-  </table>
+  </div>
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <!--体重登録フォーム-->
+      <div class="col-md-4">
+        <%= render 'form', weight: @weight %>
+      </div>
+
+      <!--体重記録一覧-->
+      <div class="col-md-7 ml-4">
+        <table class="table">
+          <div class="theader">
+            <tr>
+              <th>Date</th>
+              <th>Weight(kg)</th>
+              <th>Body Fat(%)</th>
+              <th></th>
+            </tr>
+          </div>
+
+          <div class="tbody">
+            <% @weights.each do |weight| %>
+              <tr>
+                <th><%= weight.date %></th>
+                <th><%= weight.weight %></th>
+            <th><%= weight.body_fat %></th>
+            <th><%= link_to "Edit Data", edit_weight_path(weight.id), class:"btn btn-outline-primary" %></th>
+              </tr>
+            <% end %>
+          </div>
+        </table>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -36,6 +36,7 @@
         </div>
       </div>
 
+      <!--食事投稿編集ボタン、削除ボタン-->
       <div class="row mt-4">
         <p class="col"><%= link_to "Edit Meal", edit_meal_path(@meal.id), class:"btn btn-outline-primary" %></p>
         <% if @meal.user_id == current_user.id %>
@@ -49,7 +50,9 @@
       <!--コメント一覧-->
       <div class="container">
         <div id="comments">
-          <%= render 'post_comments/comment', meal: @meal %>
+          <div class="row">
+            <%= render 'post_comments/comment', meal: @meal %>
+          </div>
         </div>
       </div>
 

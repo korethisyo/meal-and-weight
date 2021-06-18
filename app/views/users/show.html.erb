@@ -72,7 +72,6 @@
             <td>Comments： <%= meal.post_comments.count %></td>
             <td id="favorite-<%= meal.id %>">
               <%= render 'favorites/favorite', meal: meal %>
-              <%= meal.favorites.count %>
             </td>
           </tr>
         <% end %>
