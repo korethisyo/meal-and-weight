@@ -18,8 +18,4 @@ class Meal < ApplicationRecord
       self.joins(:meal_menus).where('name LIKE ?', "%#{content}%")
   end
 
-  #def self.hoge(params)
-   # Meal.find(params)
-  #end
-
 end
