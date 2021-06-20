@@ -10,10 +10,9 @@ class PostComment < ApplicationRecord
     user.nick_name
   end
 
-  def set_meal(current_user,meal)
-     self.user_id = current_user.id
-     self.meal_id = meal.id
-     self
+  def set_meal(current_user, meal)
+    self.user_id = current_user.id
+    self.meal_id = meal.id
+    self
   end
-
 end

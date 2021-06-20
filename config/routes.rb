@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root "homes#top"
   devise_for :users
-  resources :users, only:[:index, :show, :edit, :update]
-  resources :meals, only:[:new, :create, :show, :edit, :update, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update]
+  resources :meals, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :weights, only:[:index, :create, :edit, :update]
+  resources :weights, only: [:index, :create, :edit, :update]
 
   get 'search' => 'search#search'
   get 'find' => 'search#find'

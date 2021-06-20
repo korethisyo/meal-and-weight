@@ -12,7 +12,8 @@ class FavoritesController < ApplicationController
   end
 
   private
-  #上記で使用する@mealの値を先に取得
+
+  # 上記で使用する@mealの値を先に取得
   def set_meal
     @meal = Meal.find(params[:meal_id])
   end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    #@user.sex_before_type_cast
+    # @user.sex_before_type_cast
     if @user.id != current_user.id
       redirect_to user_path(current_user.id)
     end

@@ -2,9 +2,9 @@ class WeightsController < ApplicationController
   def index
     @weight = Weight.new
     @weights = Weight.all.page(params[:page])
-     # 体重のデータ取得(y軸）
+    # 体重のデータ取得(y軸）
     gon.weight = Weight.where(user_id: current_user.id).pluck(:weight)
-     # 日付のデータ取得(x軸）
+    # 日付のデータ取得(x軸）
     gon.date = Weight.where(user_id: current_user.id).pluck(:date)
   end
 

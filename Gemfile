@@ -50,6 +50,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # コード解析
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -64,10 +66,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem "refile", require:"refile/rails", github:'manfe/refile'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-#食事内容入力の際のメニュー名に対して動的にフォームを増やす
+# 食事内容入力の際のメニュー名に対して動的にフォームを増やす
 gem 'cocoon'
 
 gem 'bootstrap', '~> 4.5'

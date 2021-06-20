@@ -6,16 +6,15 @@ class Meal < ApplicationRecord
   accepts_nested_attributes_for :meal_menus, allow_destroy: true
 
   attachment :menu_image
-  enum category: {朝食:0, 昼食:1, 夕食:2, その他:3}
+  enum category: { 朝食: 0, 昼食: 1, 夕食: 2, その他: 3 }
 
   # ユーザーがいいねしているかどうかの確認
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
-  # 検索機能のためのメソッド
+  # 食事内容の検索機能のためのメソッド
   def self.search_for(content)
-      self.joins(:meal_menus).where('name LIKE ?', "%#{content}%")
+    joins(:meal_menus).where('name LIKE ?', "%#{content}%")
   end
-
 end
