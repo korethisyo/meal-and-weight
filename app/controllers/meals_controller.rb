@@ -25,8 +25,11 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find(params[:id])
-    @meal.update(meal_params)
-    redirect_to meal_path(@meal.id)
+    if @meal.update(meal_params)
+      redirect_to meal_path(@meal.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

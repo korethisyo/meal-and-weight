@@ -21,8 +21,11 @@ class WeightsController < ApplicationController
 
   def update
     @weight = Weight.find(params[:id])
-    @weight.update(weight_params)
-    redirect_to weights_path
+    if @weight.update(weight_params)
+      redirect_to weights_path
+    else
+      render :edit
+    end
   end
 
   private

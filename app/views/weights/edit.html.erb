@@ -1,5 +1,13 @@
 <div class="container">
   <h2 class="mb-4">Edit Weight Record</h2>
+
+  <!--エラーメッセージ-->
+  <div class="row justify-content-center mb-3">
+    <% if @weight.errors.any? %>
+      <%= render 'layouts/error_messages', alert: @weight %>
+    <% end %>
+  </div>
+
   <!--体重記録変更フォーム-->
   <div class="row justify-content-center">
     <%= render 'form', weight: @weight %>

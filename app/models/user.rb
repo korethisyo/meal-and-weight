@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :nick_name, presence: true
+  validates :sex, presence: true
 
   enum sex: { Female: 0, Male: 1, Others: 2, NoAnswer: 3 }
   attachment :user_image

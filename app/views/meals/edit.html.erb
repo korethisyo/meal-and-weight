@@ -2,6 +2,13 @@
 
   <h2 class="mb-4">Edit Meal Record</h2>
 
+  <!--エラーメッセージ-->
+  <div class="row justify-content-center mb-3">
+    <% if @meal.errors.any? %>
+      <%= render 'layouts/error_messages', alert: @meal %>
+    <% end %>
+  </div>
+
   <div class="row justify-content-center">
     <div class="form-horizontal">
       <%= form_with model:@meal, local: true do |f| %>

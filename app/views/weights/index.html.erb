@@ -12,8 +12,8 @@
 
   <div class="container mt-5">
     <div class="row">
-      <!--体重登録フォーム-->
       <div class="col-md-4">
+        <!--体重登録フォーム-->
         <%= render 'form', weight: @weight %>
       </div>
 
@@ -34,7 +34,13 @@
               <tr>
                 <th><%= weight.date %></th>
                 <th><%= weight.weight %></th>
-                <th><%= weight.body_fat %></th>
+                <th>
+                  <% if weight.body_fat.present? %>
+                    <%= weight.body_fat %>
+                  <% else %>
+                    <p>No Record</p>
+                  <% end %>
+                </th>
                 <th><%= link_to "Edit Data", edit_weight_path(weight.id), class:"btn btn-outline-primary" %></th>
               </tr>
             <% end %>

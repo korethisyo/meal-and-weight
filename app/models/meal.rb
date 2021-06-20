@@ -3,7 +3,13 @@ class Meal < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :meal_menus, dependent: :destroy
+
   accepts_nested_attributes_for :meal_menus, allow_destroy: true
+
+  validates :date, presence: true
+  validates :menu_image_id, presence: true
+  validates :category, presence: true
+  validates :menu_detail, presence: true
 
   attachment :menu_image
   enum category: { 朝食: 0, 昼食: 1, 夕食: 2, その他: 3 }
