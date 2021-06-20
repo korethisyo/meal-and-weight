@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    # @user.sex_before_type_cast
+    # プロフィール編集ページへ移動できるのはログインユーザーのみ
     if @user.id != current_user.id
       redirect_to user_path(current_user.id)
     end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(current_user.id)
     else
-      render :edits
+      render :edit
     end
   end
 

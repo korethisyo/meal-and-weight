@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :name, presense: true
-  # validates :nick_name, presense: true
+  validates :name, presence: true
+  validates :nick_name, presence: true
 
   enum sex: { Female: 0, Male: 1, Others: 2, NoAnswer: 3 }
   attachment :user_image

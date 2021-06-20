@@ -1,0 +1,6 @@
+<div class="alert-message">
+  You got <%= user.errors.count %> errors:</br>
+  <% user.errors.full_messages.each do |message| %>
+    <%= message %></br>
+  <% end %>
+</div>

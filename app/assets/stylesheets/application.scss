@@ -38,7 +38,15 @@ header {
 }
 
 .page {
- justify-content: center;
+  justify-content: center;
+}
+
+.alert-message {
+  color:#262626;
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
 }
  // header .logo {
   // list-style: none;
