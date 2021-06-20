@@ -79,6 +79,9 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'chart-js-rails', '~> 0.1.4'
 gem 'gon', '~> 6.2.0'
 
+# ページネーション
+gem 'kaminari', '~> 1.2.1'
+
 # デプロイ
 gem 'dotenv-rails'
 group :production do

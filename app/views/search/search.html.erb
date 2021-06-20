@@ -14,24 +14,29 @@
       </tr>
     </thead>
     <tbody>
-    <% @meals.each do |meal| %>
-      <tr>
-        <td>
-          <%= link_to meal_path(meal.id) do %>
-            <%= attachment_image_tag meal, :menu_image, :fill, 50, 50, fallback:"no_image.jpg" %>
-          <% end %>
-        </td>
-        <td>
-          <%= meal.date %>
-        </td>
-        <td>
-          <% meal.meal_menus.each do |mm| %>
-            <%= mm.name %>
-          <% end %>
-        </td>
-        <td><%= meal.user.nick_name %></td>
-      </tr>
-    <% end %>
+      <% @meals.each do |meal| %>
+        <tr>
+          <td>
+            <%= link_to meal_path(meal.id) do %>
+              <%= attachment_image_tag meal, :menu_image, :fill, 50, 50, fallback:"no_image.jpg" %>
+            <% end %>
+          </td>
+          <td>
+            <%= meal.date %>
+          </td>
+          <td>
+            <% meal.meal_menus.each do |mm| %>
+              <%= mm.name %>
+            <% end %>
+          </td>
+          <td><%= meal.user.nick_name %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
+
+  <!--ページネーション-->
+  <div class="row page">
+    <%= paginate @meals %>
+  </div>
 </div>

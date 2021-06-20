@@ -56,7 +56,7 @@
           <th></th>
           <th></th>
         </tr>
-        <% @user.meals.each do |meal| %>
+        <% @meals.each do |meal| %>
           <tr class="table-body">
             <td>
               <%= link_to meal_path(meal.id) do %>
@@ -76,6 +76,10 @@
           </tr>
         <% end %>
       </table>
+      <!--ページネーション-->
+      <div class="row page">
+        <%= paginate @meals %>
+      </div>
     </div>
   </div>
 

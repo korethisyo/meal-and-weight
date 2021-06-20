@@ -30,6 +30,16 @@ header {
   margin-top: 40px;
  }
 
+// /ページネーションのデザイン
+.pagination>li>a {
+  border: none;
+  border-radius: 3px;
+  color: #696969;
+}
+
+.page {
+ justify-content: center;
+}
  // header .logo {
   // list-style: none;
  // }
