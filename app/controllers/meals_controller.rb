@@ -21,6 +21,10 @@ class MealsController < ApplicationController
 
   def edit
     @meal = Meal.find(params[:id])
+    # 他のユーザーの投稿した食事編集のページには遷移できない
+    if @meal.user_id != current_user.id
+      redirect_to meal_path(@meal.id)
+    end
   end
 
   def update

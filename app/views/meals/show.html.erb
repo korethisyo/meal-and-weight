@@ -38,11 +38,11 @@
 
       <!--食事投稿編集ボタン、削除ボタン-->
       <div class="row mt-4">
-        <p class="col"><%= link_to "Edit Meal", edit_meal_path(@meal.id), class:"btn btn-outline-primary" %></p>
         <% if @meal.user_id == current_user.id %>
-        <p class="col">
-          <%= link_to "Delete Meal", meal_path(@meal.id), method: :delete, class:"btn btn-outline-danger" %>
-        </p>
+          <p class="col"><%= link_to "Edit Meal", edit_meal_path(@meal.id), class:"btn btn-outline-primary" %></p>
+          <p class="col">
+            <%= link_to "Delete Meal", meal_path(@meal.id), method: :delete, class:"btn btn-outline-danger" %>
+          </p>
         <% end %>
       </div>
     </div>
