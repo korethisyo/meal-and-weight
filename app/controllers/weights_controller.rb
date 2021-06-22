@@ -1,6 +1,9 @@
 class WeightsController < ApplicationController
-  def index
+  def new
     @weight = Weight.new
+  end
+
+  def index
     @weights = Weight.all.page(params[:page])
     # 体重のデータ取得(y軸）
     gon.weight = Weight.where(user_id: current_user.id).pluck(:weight)
@@ -11,8 +14,11 @@ class WeightsController < ApplicationController
   def create
     @weight = Weight.new(weight_params)
     @weight.user_id = current_user.id
-    @weight.save
-    redirect_to weights_path
+    if @weight.save
+      redirect_to weights_path
+    else
+      render :new
+    end
   end
 
   def edit

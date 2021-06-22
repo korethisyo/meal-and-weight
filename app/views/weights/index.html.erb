@@ -1,6 +1,9 @@
 <div class="container">
 
-  <h2 class="mb-4">Weight Record</h2>
+  <h2 class="mb-4">Weight Data</h2>
+  <div class="weight-form">
+    <%= link_to "Record Weight", new_weight_path, class:"btn btn-warning" %>
+  </div>
 
   <!--体重グラフ-->
   <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
@@ -11,44 +14,37 @@
 
 
   <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-4">
-        <!--体重登録フォーム-->
-        <%= render 'form', weight: @weight %>
-      </div>
+    <!--体重記録一覧-->
+    <div class="col-md-10 mx-auto">
+      <table class="table">
+        <div class="theader">
+          <tr>
+            <th>Date</th>
+            <th>Weight(kg)</th>
+            <th>Body Fat(%)</th>
+            <th></th>
+          </tr>
+        </div>
 
-      <!--体重記録一覧-->
-      <div class="col-md-7 ml-4">
-        <table class="table">
-          <div class="theader">
+        <div class="tbody">
+          <% @weights.each do |weight| %>
             <tr>
-              <th>Date</th>
-              <th>Weight(kg)</th>
-              <th>Body Fat(%)</th>
-              <th></th>
+              <th><%= weight.date %></th>
+              <th><%= weight.weight %></th>
+              <th>
+                <% if weight.body_fat.present? %>
+                  <%= weight.body_fat %>
+                <% else %>
+                  <p>No Record</p>
+                <% end %>
+              </th>
+              <th><%= link_to "Edit Data", edit_weight_path(weight.id), class:"btn btn-outline-primary" %></th>
             </tr>
-          </div>
-
-          <div class="tbody">
-            <% @weights.each do |weight| %>
-              <tr>
-                <th><%= weight.date %></th>
-                <th><%= weight.weight %></th>
-                <th>
-                  <% if weight.body_fat.present? %>
-                    <%= weight.body_fat %>
-                  <% else %>
-                    <p>No Record</p>
-                  <% end %>
-                </th>
-                <th><%= link_to "Edit Data", edit_weight_path(weight.id), class:"btn btn-outline-primary" %></th>
-              </tr>
-            <% end %>
-          </div>
-        </table>
-        <!--ページネーション-->
-        <div class="page"><%= paginate @weights %></div>
-      </div>
+          <% end %>
+        </div>
+      </table>
+      <!--ページネーション-->
+      <div class="row page"><%= paginate @weights %></div>
     </div>
   </div>
 
