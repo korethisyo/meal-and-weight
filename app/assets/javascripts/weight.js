@@ -1,10 +1,11 @@
 // jsをturbolinkでページをロードしたときに読みこます
 $(document).on('ready turbolinks:load', function() {
   // x軸の１データあたりの幅
-  var xAxisLabelMinWidth = 70;
+  // var xAxisLabelMinWidth = 70;
   // グラフ全体の幅を計算する
-  var width = gon.date.length*xAxisLabelMinWidth;
-  document.getElementById("myChart").style.width = width+"px";
+  // var width = gon.date.length*xAxisLabelMinWidth;
+  // document.getElementById("myChart").style.width = width+"px";
+
   // グラフの高さの指定
   document.getElementById("myChart").style.height = "500px";
 
