@@ -6,7 +6,7 @@
 
   <nav class="my-2 my-md-0 mr-md-3">
     <% if user_signed_in? %>
-      <%= link_to weights_path, class:"p-2 text-dark" do %>
+      <%= link_to weight_path(current_user.id), class:"p-2 text-dark" do %>
         <i class="fas fa-weight"> Weight</i>
       <% end %>
       <%= link_to new_meal_path, class:"p-2 text-dark" do %>
