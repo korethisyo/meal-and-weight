@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # ログインしていないと、topページだけの閲覧のみ
-  before_action :authenticate_user!,except: [:top]
+  before_action :authenticate_user!, except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

@@ -1,11 +1,14 @@
 <div class="container">
 
   <h2 class="mb-4">Weight Data</h2>
+
+  <!--体重記録フォームへの遷移-->
   <div class="weight-form">
     <%= link_to "Record Weight", new_weight_path, class:"btn btn-warning" %>
   </div>
 
   <!--体重グラフ-->
+  <!--体重のデータが増え、コンテイナーの幅を超えたときにスクロールができるように設定-->
   <div class="chartWrapper" style="position: relative; overflow-x: scroll;">
     <div class="chartContainer" style="height:500px;">
       <canvas id="myChart" style="position: absolute; left: 0; right: 0; top: 0; margin: auto;"></canvas>
