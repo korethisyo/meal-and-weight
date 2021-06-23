@@ -3,7 +3,7 @@ class WeightsController < ApplicationController
     @weight = Weight.new
   end
 
-  def show
+  def index
     @weights = current_user.weights.all.page(params[:page])
     # 体重のデータ取得(y軸）
     gon.weight = Weight.where(user_id: current_user.id).pluck(:weight)
@@ -15,7 +15,7 @@ class WeightsController < ApplicationController
     @weight = Weight.new(weight_params)
     @weight.user_id = current_user.id
     if @weight.save
-      redirect_to weight_path(@weight)
+      redirect_to weights_path
     else
       render :new
     end
@@ -23,12 +23,15 @@ class WeightsController < ApplicationController
 
   def edit
     @weight = Weight.find(params[:id])
+    if @weight.user_id != current_user.id
+      redirect_to weights_path
+    end
   end
 
   def update
     @weight = Weight.find(params[:id])
     if @weight.update(weight_params)
-      redirect_to weight_path(current_user.id)
+      redirect_to weights_path
     else
       render :edit
     end

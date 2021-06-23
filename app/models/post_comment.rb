@@ -2,6 +2,8 @@ class PostComment < ApplicationRecord
   belongs_to :user
   belongs_to :meal
 
+  validates :comment, presence: true
+
   def written_by?(current_user)
     user.id == current_user.id
   end
