@@ -7,7 +7,7 @@ class Meal < ApplicationRecord
   accepts_nested_attributes_for :meal_menus, allow_destroy: true
 
   validates :date, presence: true
-  validates :menu_image_id, presence: true
+  validates :menu_image, presence: true
   validates :category, presence: true
   validates :menu_detail, presence: true
 
