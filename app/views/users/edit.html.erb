@@ -1,34 +1,48 @@
-<h1>プロフィール編集</h1>
+<div class="container">
 
-<%= form_with model:@user, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :name, "氏名" %>
-    <%= f.text_field :name %>
+  <h2 class="mb-4">Edit Profile</h2>
+
+  <!--エラーメッセージ-->
+  <div class="row justify-content-center mb-3">
+    <% if @user.errors.any? %>
+      <%= render 'layouts/error_messages', alert: @user %>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.label :nick_name, "ニックネーム" %>
-    <%= f.text_field :nick_name %>
+
+  <div class="row justify-content-center">
+    <div class="form-horizontal">
+      <%= form_with model:@user, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "Name", class:"form-label" %>
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :nick_name, "Nick Name", class:"form-label" %>
+          <%= f.text_field :nick_name, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :user_image_id, "Profile Image(optional)", class:"form-label" %>
+          <%= attachment_image_tag @user, :user_image, :fill, 60, 60, fallback:"no_image.jpg" %>
+          <%= f.attachment_field :user_image, class:"form-control-file" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sex, "Sex", class:"form-label" %>
+          <%= f.select :sex, options_for_select(User.sexes.keys, @user.sex), {}, class:"form-control", include_blank: "" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :height, "Height (optional)", class:"form-label" %>
+          <%= f.text_field :height, placeholder: "xxx.x", class:"form-control" %> cm
+        </div>
+        <div class="form-group">
+          <%= f.label :target_weight, "Target Weight (optional)", class:"form-label" %>
+          <%= f.text_field :target_weight, placeholder: "xx.x", class:"form-control" %> kg
+        </div>
+        <div class="form-group">
+          <%= f.label :introduction, "About Me (optional)", class:"form-label" %>
+          <%= f.text_area :introduction, class:"form-control" %>
+        </div>
+        <%= f.submit "Update", class:"btn btn-outline-secondary" %>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= attachment_image_tag @user, :user_image, :fill, 60, 60, fallback:"no_image.jpg" %>
-    <%= f.label :user_image_id, "プロフィール画像" %>
-    <%= f.attachment_field :user_image %>
-  </div>
-  <div class="form-group">
-    <%= f.label :sex, "性別" %>
-    <%= f.select :sex, options_for_select(User.sexes.keys, @user.sex), include_blank: "選択してください" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :height, "身長" %>
-    <%= f.text_field :height %> cm
-  </div>
-  <div class="form-group">
-    <%= f.label :target_weight, "目標体重" %>
-    <%= f.text_field :target_weight %> kg
-  </div>
-  <div class="form-group">
-    <%= f.label :introduction, "自己紹介" %>
-    <%= f.text_area :introduction %>
-  </div>
-  <%= f.submit "更新する" %>
-<% end %>
+</div>

@@ -1,12 +1,19 @@
 <div class="container">
 
-  <h2>食事内容入力</h2>
+  <h2 class="mb-4">Meal Record</h2>
+
+  <!--エラーメッセージ-->
+  <div class="row justify-content-center mb-3">
+    <% if @meal.errors.any? %>
+      <%= render 'layouts/error_messages', alert: @meal %>
+    <% end %>
+  </div>
 
   <div class="row justify-content-center">
     <div class="form-horizontal">
       <%= form_with model:@meal, local: true do |f| %>
         <div class="form-group">
-          <%= f.label :date, "日付", class:"form-label" %>
+          <%= f.label :date, "Date", class:"form-label" %>
           <%= f.date_field :date, class:"form-control" %>
         </div>
         <div class="form-group">
@@ -17,20 +24,20 @@
         </div>
         <div class="form-group">
           <div class="custom-file">
-            <%= f.label :menu_image_id, "食事画像", class:"custome-file-label" %>
+            <%= f.label :menu_image_id, "Meal Image", class:"custome-file-label" %>
             <%= f.attachment_field :menu_image, class:"form-control-file" %>
           </div>
         </div>
         <div class="form-group">
-          <%= f.label :category, "カテゴリー", class:"form-label" %>
-          <%= f.select :category, options_for_select(Meal.categories.keys), class:"form-control" %>
+          <%= f.label :category, "Category", class:"form-label" %>
+          <%= f.select :category, options_for_select(Meal.categories.keys), {}, class:"form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :menu_detail, "メニュー詳細", class:"form-label" %>
+          <%= f.label :menu_detail, "Menu Details", class:"form-label" %>
           <%= f.text_area :menu_detail, class:"form-control" %>
         </div>
         <div class="button">
-          <%= f.submit "記録する", class:"btn btn-success" %>
+          <%= f.submit "Save", class:"btn btn-outline-secondary" %>
         </div>
       <% end %>
     </div>

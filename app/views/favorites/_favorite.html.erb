@@ -1,5 +1,11 @@
 <% if meal.favorited_by?(current_user) %>
-  <%= link_to meal.favorites.count, meal_favorites_path(meal.id), method: :delete, remote: true, class:"fas fa-heart heart_red" %>
+  <%= link_to meal_favorites_path(meal.id), method: :delete, remote: true do %>
+    <i class="fas fa-heart like-btn" ></i>
+  <% end %>
+  <%= meal.favorites.count %>
 <% else %>
-  <%= link_to meal.favorites.count, meal_favorites_path(meal.id), method: :post, remote: true, class:"fas fa-heart heart_red"  %>
+  <%= link_to meal_favorites_path(meal.id), method: :post, remote: true do %>
+    <i class="far fa-heart unlike-btn"></i>
+  <% end %>
+  <%= meal.favorites.count %>
 <% end %>

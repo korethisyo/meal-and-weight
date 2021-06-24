@@ -1,42 +1,70 @@
 <!--検索フォーム-->
 <%= render 'search/search' %>
 
-<h1>食事内容詳細</h1>
+<div class="container">
+  <h2 class="mb-4">Meal Details</h2>
 
-<%= attachment_image_tag @meal, :menu_image, :fill, 150, 150, fallback:"no_image.jpg" %>
-<p>
-  メニュー
-  <% @meal.meal_menus.each do |mm| %>
-    <%= mm.name %>
-  <% end %>
-</p>
-<p>カテゴリー  <%= @meal.category %></p>
-<p>メニュー詳細  <%= @meal.menu_detail %></p>
+  <div class="row offset-md-2">
+    <div class="md-5 text-center mb-4 mt-6">
+      <%= attachment_image_tag @meal, :menu_image, :fill, 300, 300, size: "300x300", class: 'shadow mb-5 bg-white rounded', fallback: "no_image.jpg"%>
+    </div>
 
-<!--いいね機能の非同期通信-->
-<div id="favorite-<%= @meal.id %>">
-  <%= render 'favorites/favorite', meal: @meal %>
+    <div class="col-md-5 mt-3 ml-5 text-left">
+      <div class="row mt-2">
+        <p class="col pr-0 font-weight-bolder">Names</p>
+        <h4 class="col pl-0 font-weight-bold">
+          <% @meal.meal_menus.each do |mm| %>
+            <%= mm.name %></br>
+          <% end %>
+        </h4>
+      </div>
+
+      <div class="row mt-3">
+        <p class="col pr-0 font-weight-bolder">Category</p>
+        <p class="col pl-0"><%= @meal.category %></p>
+      </div>
+
+      <div class="row mt-3">
+        <p class="col pr-0 font-weight-bolder">Details</p>
+        <p class="col pl-0"><%= @meal.menu_detail %></p>
+      </div>
+
+      <!--いいね機能の非同期通信-->
+      <div class="row mt-3 ml-2">
+        <div id="favorite-<%= @meal.id %>">
+          <%= render 'favorites/favorite', meal: @meal %>
+        </div>
+      </div>
+
+      <!--食事投稿編集ボタン、削除ボタン-->
+      <div class="row mt-4">
+        <% if @meal.user_id == current_user.id %>
+          <p class="col"><%= link_to "Edit Meal", edit_meal_path(@meal.id), class:"btn btn-outline-primary" %></p>
+          <p class="col">
+            <%= link_to "Delete Meal", meal_path(@meal.id), method: :delete, class:"btn btn-outline-danger" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
+      <!--コメント一覧-->
+      <div class="container">
+        <div id="comments">
+          <div class="row">
+            <%= render 'post_comments/comment', meal: @meal %>
+          </div>
+        </div>
+      </div>
+
+      <!--コメント投稿フォーム-->
+      <div class="container mt-5">
+        <div class="comment-form col-sm-5 col-md-6">
+          <%= form_with model:[@meal, @post_comment] do |f| %>
+            <%= f.text_area :comment, rows:'5', placeholder:"Write a comment...", class:"form-control" %>
+            <%= f.submit "send", class:"btn btn-outline-success mt-3" %>
+          <% end %>
+        </div>
+      </div>
+
+  </div>
 </div>
-<!--いいね機能の非同期通信-->
-
-<p><%= link_to "編集する", edit_meal_path(@meal.id) %></p>
-
-<% if @meal.user_id == current_user.id %>
-  <p><%= link_to "削除", meal_path(@meal.id), method: :delete %></p>
-<% end %>
-
-<!--コメント一覧-->
-<div id="comments">
-  <%= render 'post_comments/comment', meal: @meal %>
-</div>
-<!--コメント一覧-->
-
-<!--コメント投稿フォーム-->
-<div class="comment-form">
-  <%= form_with model:[@meal, @post_comment] do |f| %>
-    <%= f.label :comment, "コメントを書く" %>
-    <%= f.text_area :comment, rows:'5', placeholder:"コメントをここに" %>
-    <%= f.submit "コメントを送信する" %>
-  <% end %>
-</div>
-<!--コメント投稿フォーム-->

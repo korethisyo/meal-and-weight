@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    @meals = @user.meals.all.page(params[:page])
   end
 
   def edit
     @user = User.find(params[:id])
-    #@user.sex_before_type_cast
+    # プロフィール編集ページへ移動できるのはログインユーザーのみ
     if @user.id != current_user.id
       redirect_to user_path(current_user.id)
     end
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(current_user.id)
     else
-      render :edits
+      render :edit
     end
   end
 

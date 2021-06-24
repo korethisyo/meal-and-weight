@@ -1,1 +1,28 @@
-<h1>topページ</h1>
+<!--トップページ画像部分-->
+<div class="py-5 text-center main-visual">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light text-dark">IT'S TIME TO MAKE YOU HEALTHY!!</h1>
+      <p>
+        <%= link_to "SIGN UP NOW", new_user_registration_path, class:"btn btn-warning rounded-pill text-white my-2" %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!--サイト説明部分-->
+<h1 class="content-title text-center">What you can do</h1>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-6 text-center">
+      <i class="fas fa-balance-scale-right scale"></i>
+      <h4 class="my-3">Manage your Weight</h4>
+      <p>簡単に体重の記録を行え、</br>グラフで体重の変化を確認できる</p>
+    </div>
+    <div class="col-lg-6 text-center">
+      <i class="far fa-clipboard meal-record"></i>
+      <h4 class="my-3">Manage your Meals</h4>
+      <p>記録した食事内容からたくさんの人と共有</br>健康管理に対するモチベーションアップに</p>
+    </div>
+  </div>
+</div>

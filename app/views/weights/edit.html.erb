@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="mb-4">Edit Weight Record</h2>
+
+  <!--エラーメッセージ-->
+  <div class="row justify-content-center mb-3">
+    <% if @weight.errors.any? %>
+      <%= render 'layouts/error_messages', alert: @weight %>
+    <% end %>
+  </div>
+
+  <!--体重記録変更フォーム-->
+  <div class="row justify-content-center">
+    <div class="form-horizontal">
+      <%= render 'form', weight: @weight %>
+    </div>
+  </div>
+  <!--weights/index.html.erbに戻る-->
+  <div class="row justify-content-center mt-4">
+    <%= link_to "Back", weights_path, class:"text-dark" %>
+  </div>
+</div>
+
