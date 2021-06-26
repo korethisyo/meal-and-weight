@@ -31,5 +31,5 @@ https://docs.google.com/spreadsheets/d/18WawQeFzBHU1F8PG3zQ-_i5BDFjEK00mROI9dNoE
 - IDE：Cloud9
 
 ## 使用素材
-外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-使用しない場合は、使用素材の項目をREADMEから削除してください。
+- イラストAC  https://www.ac-illust.com/
+- O-DAN   https://o-dan.net/ja/
